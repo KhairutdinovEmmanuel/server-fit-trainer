@@ -10,6 +10,12 @@ export interface VerifyBody {
 	confirmCode: number;
 }
 
+export interface ForgotBody {
+	email: string;
+	password: string;
+	confirmCode: number;
+}
+
 export type RequestAuth =
 	Request<{}, {}, AuthorizationBody, {}>;
 
@@ -20,4 +26,10 @@ export type RequestVerify =
 	Request<{}, {}, VerifyBody, {}>;
 
 export type ResponseVerify =
+	Response<{}, {}>;
+
+export type RequestForgot =
+	Request<{}, {}, ForgotBody, {}>;
+
+export type ResponseForgot =
 	Response<{}, {}>;
