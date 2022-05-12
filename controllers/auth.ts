@@ -1,13 +1,15 @@
 import { Router } from "express";
 import {
 	validationAuth,
+	validationVerify,
 } from "../validations/auth";
 import {
 	generateAccessToken,
 	generateRefreshToken
 } from "../services/auth";
 import {
-	RequestAuth, ResponseAuth
+	RequestAuth, RequestVerify,
+	ResponseAuth, ResponseVerify
 } from "../types/ControllerAuth";
 
 const router = Router();
@@ -17,7 +19,8 @@ router.post(
 	validationAuth,
 	(req: RequestAuth, res: ResponseAuth) => {
 		try {
-			// сheck if there is a user with the same email ...
+			// check if there is a user with the same email ...
+			// check user is confirmed email ...
 			// create user ...
 			const user = { id: "1", role: [] };
 			const access_token = generateAccessToken(user);
@@ -36,7 +39,8 @@ router.post(
 	validationAuth,
 	(req: RequestAuth, res: ResponseAuth) => {
 		try {
-			// сheck if there is a user with the same email ...
+			// check if there is a user with the same email ...
+			// check user is confirmed email ...
 			// get user by email ...
 			const user = { id: "1", role: [] };
 			const access_token = generateAccessToken(user);
@@ -44,8 +48,29 @@ router.post(
 			res.cookie("access_token", access_token, { httpOnly: true });
 			res.cookie("refresh_token", refresh_token, { httpOnly: true });
 			return res.status(204).json({});
-		} catch (error) {
-		
+		} catch (error: any) {
+			return res.status(500).json({ message: `Server Error: ${error.message}` })
+		}
+	}
+)
+
+router.post(
+	'/verify',
+	validationVerify,
+	(req: RequestVerify, res: ResponseVerify) => {
+		try {
+			// check if there is a user with the same email ...
+			// check user is not confirmed email ...
+			// set user confirmed.email: true ...
+			// get user by email ...
+			const user = { id: "1", role: [] };
+			const access_token = generateAccessToken(user);
+			const refresh_token = generateRefreshToken(user);
+			res.cookie("access_token", access_token, { httpOnly: true });
+			res.cookie("refresh_token", refresh_token, { httpOnly: true });
+			return res.status(204).json({});
+		} catch (error: any) {
+			return res.status(500).json({ message: `Server Error: ${error.message}` })
 		}
 	}
 )
