@@ -1,9 +1,9 @@
 import {body} from "express-validator";
 import {combineValidation} from "../utils/validationHelper";
-import {RequestRegister, ResponseRegister} from "../types/ControllerAuth";
+import {RequestAuth, ResponseAuth} from "../types/ControllerAuth";
 import errorMessages from "./index";
 
-export const validationRegister = combineValidation<RequestRegister, ResponseRegister>([
+export const validationAuth = combineValidation<RequestAuth, ResponseAuth>([
 	body("email")
 		.isString()
 		.withMessage(errorMessages.MESSAGE_ERROR_TYPE_STRING)
