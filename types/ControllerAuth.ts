@@ -5,8 +5,19 @@ export interface AuthorizationBody {
 	password: string;
 }
 
+export interface VerifyBody {
+	email: string;
+	confirmCode: number;
+}
+
 export type RequestAuth =
-	Request<{}, {}, Pick<AuthorizationBody, "email" | "password">, {}>;
+	Request<{}, {}, AuthorizationBody, {}>;
 
 export type ResponseAuth =
+	Response<{}, {}>;
+
+export type RequestVerify =
+	Request<{}, {}, VerifyBody, {}>;
+
+export type ResponseVerify =
 	Response<{}, {}>;
