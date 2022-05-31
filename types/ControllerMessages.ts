@@ -11,3 +11,9 @@ export type RequestVerify =
 
 export type ResponseVerify =
 	Response<{}, {}>;
+
+export type RequestForgot =
+	Request<{}, {}, MessageBody, {}>;
+
+export type ResponseForgot =
+	Response<{}, {}>;
