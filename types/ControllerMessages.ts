@@ -17,3 +17,9 @@ export type RequestForgot =
 
 export type ResponseForgot =
 	Response<{}, {}>;
+
+export type RequestChangePassword =
+	Request<{}, {}, MessageBody, {}>;
+
+export type ResponseChangePassword =
+	Response<{}, {}>;
