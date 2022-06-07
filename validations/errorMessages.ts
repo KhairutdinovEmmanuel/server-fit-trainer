@@ -14,6 +14,7 @@ const MESSAGE_ERROR_TYPE_NUMBER: DynamicMessageCreator = (value, meta): string =
 }
 
 // CONSTANT MESSAGES
+const MESSAGE_ERROR_TYPE_TEMPLATE: string = 'Type is not match templates types';
 const MESSAGE_ERROR_PASSWORD: string = 'Password must be at least 6 and no more than 12 characters long';
 const MESSAGE_ERROR_CONFIRM_CODE: string = 'Confirm code must be at least 6 and no more than 6 characters long';
 
@@ -23,4 +24,5 @@ export default {
 	MESSAGE_ERROR_TYPE_NUMBER,
 	MESSAGE_ERROR_PASSWORD,
 	MESSAGE_ERROR_CONFIRM_CODE,
+	MESSAGE_ERROR_TYPE_TEMPLATE,
 }
