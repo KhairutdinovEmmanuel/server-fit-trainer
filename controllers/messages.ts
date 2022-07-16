@@ -10,7 +10,7 @@ import {
 	RequestVerify, ResponseVerify,
 	RequestForgot, ResponseForgot,
 	RequestChangePassword, ResponseChangePassword,
-} from "../types/ControllerMessages";
+} from "../types/MessagesController";
 import {MailDataRequired} from "@sendgrid/helpers/classes/mail";
 
 const router = Router();

@@ -13,6 +13,4 @@ export default class SendgridEmail {
 		const data = this.data;
 		return await sgMail.send(data);
 	}
-	
-	
 }

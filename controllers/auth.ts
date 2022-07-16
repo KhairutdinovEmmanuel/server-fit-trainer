@@ -12,7 +12,8 @@ import {
 	RequestAuth, ResponseAuth,
 	RequestVerify, ResponseVerify,
 	RequestForgot, ResponseForgot,
-} from "../types/ControllerAuth";
+} from "../types/AuthController";
+import {PayloadTokenType} from "../types/AuthService";
 
 const router = Router();
 
@@ -23,9 +24,9 @@ router.post(
 		try {
 			// check if there is a user with the same email ...
 			// create user ...
-			const user = { id: "1", role: [] };
-			const access_token = generateAccessToken(user);
-			const refresh_token = generateRefreshToken(user);
+			const tokenPayload: PayloadTokenType = { userId: "1", role: [] };
+			const access_token = generateAccessToken(tokenPayload);
+			const refresh_token = generateRefreshToken(tokenPayload);
 			res.cookie("access_token", access_token, { httpOnly: true });
 			res.cookie("refresh_token", refresh_token, { httpOnly: true });
 			return res.status(204).json({});
@@ -43,9 +44,9 @@ router.post(
 			// check if there is a user with the same email ...
 			// check user is confirmed email ...
 			// get user by email ...
-			const user = { id: "1", role: [] };
-			const access_token = generateAccessToken(user);
-			const refresh_token = generateRefreshToken(user);
+			const tokenPayload: PayloadTokenType = { userId: "1", role: [] };
+			const access_token = generateAccessToken(tokenPayload);
+			const refresh_token = generateRefreshToken(tokenPayload);
 			res.cookie("access_token", access_token, { httpOnly: true });
 			res.cookie("refresh_token", refresh_token, { httpOnly: true });
 			return res.status(204).json({});
@@ -64,9 +65,9 @@ router.post(
 			// check user is not confirmed email ...
 			// set user confirmed.email: true ...
 			// get user by email ...
-			const user = { id: "1", role: [] };
-			const access_token = generateAccessToken(user);
-			const refresh_token = generateRefreshToken(user);
+			const tokenPayload: PayloadTokenType = { userId: "1", role: [] };
+			const access_token = generateAccessToken(tokenPayload);
+			const refresh_token = generateRefreshToken(tokenPayload);
 			res.cookie("access_token", access_token, { httpOnly: true });
 			res.cookie("refresh_token", refresh_token, { httpOnly: true });
 			return res.status(204).json({});
@@ -85,9 +86,9 @@ router.put(
 			// check user is confirmed email ...
 			// set user confirmed.changedPassword: true ...
 			// get user by email ...
-			const user = { id: "1", role: [] };
-			const access_token = generateAccessToken(user);
-			const refresh_token = generateRefreshToken(user);
+			const tokenPayload: PayloadTokenType = { userId: "1", role: [] };
+			const access_token = generateAccessToken(tokenPayload);
+			const refresh_token = generateRefreshToken(tokenPayload);
 			res.cookie("access_token", access_token, { httpOnly: true });
 			res.cookie("refresh_token", refresh_token, { httpOnly: true });
 			return res.status(204).json({});
