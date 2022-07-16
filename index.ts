@@ -4,6 +4,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 // CONFIGS
+import log from "./configs/log";
 import corsConfig from "./configs/cors";
 import mongoConfig from "./configs/mongoConfig";
 import dotEnvConfig from "./configs/dotEnvConfig";
@@ -22,13 +23,19 @@ app.use(cookieParser());
 
 // CONSTANTS
 const PORT = process.env.PORT || 4000;
-const MONGO_URI = process.env.MONGO_URI || '';
+const MONGO_URI = process.env.MONGO_URI;
 
 // ROUTES
 app.use('/api/auth', controllerAuth);
 app.use('/api/messages', controllerMessages);
-app.use('/api/users', controllerUsers)
+app.use('/api/users', controllerUsers);
 
-mongoose.connect(MONGO_URI, mongoConfig);
+(async () => {
+    if (!MONGO_URI) {
+        log.error('Environment variable MONGO_URI is not defined');
+        return process.exit(1);
+    }
+    await mongoose.connect(MONGO_URI, mongoConfig);
+})();
 
-app.listen(PORT, () => console.log('Server started'));
+app.listen(PORT, () => log.info('Server started'));
