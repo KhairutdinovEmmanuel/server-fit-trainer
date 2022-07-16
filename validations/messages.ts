@@ -2,7 +2,7 @@ import {body} from "express-validator";
 import errorMessages from "./errorMessages";
 import customValidations from "./customValidations";
 import {combineValidation} from "../utils/validationHelper";
-import {RequestVerify, ResponseVerify} from "../types/ControllerMessages";
+import {RequestVerify, ResponseVerify} from "../types/MessagesController";
 
 export const validationControllerMessages = combineValidation<RequestVerify, ResponseVerify>([
 	body("type")

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { PayloadTokenType } from "../types/ServiceAuth";
+import { PayloadTokenType } from "../types/AuthService";
 
 const SECRET_TOKEN_KEY: string = process.env.SECRET_TOKEN_KEY || "SECRET_KEY";
 

@@ -4,7 +4,7 @@ import {
 	RequestAuth, ResponseAuth,
 	RequestVerify, ResponseVerify,
 	RequestForgot, ResponseForgot
-} from "../types/ControllerAuth";
+} from "../types/AuthController";
 import errorMessages from "./errorMessages";
 import customValidations from "./customValidations";
 
