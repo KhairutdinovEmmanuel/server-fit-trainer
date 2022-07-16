@@ -10,6 +10,7 @@ import dotEnvConfig from "./configs/dotEnvConfig";
 // CONTROLLERS
 import controllerAuth from "./controllers/auth";
 import controllerMessages from "./controllers/messages";
+import controllerUsers from "./controllers/users";
 
 const app = express();
 
@@ -26,6 +27,7 @@ const MONGO_URI = process.env.MONGO_URI || '';
 // ROUTES
 app.use('/api/auth', controllerAuth);
 app.use('/api/messages', controllerMessages);
+app.use('/api/users', controllerUsers)
 
 mongoose.connect(MONGO_URI, mongoConfig);
 
